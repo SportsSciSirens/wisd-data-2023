@@ -17,8 +17,25 @@
 * [Download Data](#download-data)
 
 ## Overview
-This is our getting started codebase where you will be provided a script and steps to download the file. 
+This is our getting started codebase where you will be provided a script and steps to download the file.
+```text
++-------------------------------+       +-------------------------------+
+|            events             |       |           tracking            |
++-------------------------------+       +-------------------------------+
+| eventId (UUID, PK)            |<------|       gameId (UUID, PK, FK)    |
+| gameId (UUID)                 |       |       frameIdx (SERIAL, PK)    |
+| eventType (VARCHAR(255))      |       |       homePlayers (JSONB)      |
+| shotClock (FLOAT)             |       |       awayPlayers (JSONB)      |
+| gameClock (FLOAT)             |       |       ball (JSONB)             |
+| wallClock (BIGINT)            |       |       period (INTEGER)         |
+| period (INTEGER)              |       |       gameClock (FLOAT)        |
+| homePlayers (JSONB)           |       |       gameClockStopped (BOOLEAN)|
+| awayPlayers (JSONB)           |       |       shotClock (FLOAT)        |
+| playerId (UUID)               |       |       wallClock (BIGINT)       |
+| pbpId (UUID)                  |       +-------------------------------+
++-------------------------------+
 
+```
 ## Prerequisites
 * Python v3.10
 * AWS Credentials
@@ -43,3 +60,6 @@ AWS_SECRET_ACCESS_KEY
 > 📝: FILE_PATH_FOR_DATA set it to whatever file path you wish to store the data.
 
 4. Run `python download-data.py` and the script will proceed to download all the data from the SportsRadar S3 bucket. 
+
+### Store Data in PostgreSQL
+- `CREATE EXTENSION IF NOT EXISTS "uuid-ossp";`
