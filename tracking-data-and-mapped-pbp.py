@@ -1,17 +1,29 @@
+import os
 import pandas as pd
+from dotenv import load_dotenv
 from py_ball import playbyplay
 
+load_dotenv()
 
-# list of game id's
-list_of_ids = ['0042100301', '0042100302', '0042100303', '0042100304', '0042100305', '0042100306', '0042100307', '0042100311', '0042100312', '0042100313',
-                 '0042100314', '0042100315', '0042100401', '0042100402', '0042100403', '0042100404', '0042100405', '0042100406'] 
- 
+try:
+    data_directory = os.getenv('FILE_PATH_FOR_DATA')
+    if not data_directory:
+        raise Exception("FILE_PATH_FOR_DATA environment variable is not set.")
+    list_of_ids = os.getenv('GAME_IDS')
+    if not list_of_ids:
+        raise Exception("GAME_IDS environment variable is not set.")
+    list_of_ids = list_of_ids.split(',')
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
+
 # create empty EVENT dataframe list
 eventDataframes = []
 
  # append datasets into the EVENT dataframes
 for i in range(len(list_of_ids)):
-    tempEvent_df = pd.read_csv("games/"+list_of_ids[i]+"/"+list_of_ids[i]+"_events.csv")
+    file_path_for_events = f'{data_directory}/games/{list_of_ids[i]}/{list_of_ids[i]}_events.csv'
+    # tempEvent_df = pd.read_csv(f"games/"+list_of_ids[i]+"/"+list_of_ids[i]+"_events.csv")
+    tempEvent_df = pd.read_csv(file_path_for_events)
     eventDataframes.append(tempEvent_df)
 
 
@@ -21,7 +33,9 @@ trackingDataframes = []
 
 # append datasets into the TRACKING dataframes
 for i in range(len(list_of_ids)):
-    tempTracking_df = pd.read_csv("games/"+list_of_ids[i]+"/"+list_of_ids[i]+"_tracking.csv")
+    file_path_for_tracking = f'{data_directory}/games/{list_of_ids[i]}/{list_of_ids[i]}_tracking.csv'
+    # tempTracking_df = pd.read_csv("games/"+list_of_ids[i]+"/"+list_of_ids[i]+"_tracking.csv")
+    tempTracking_df = pd.read_csv(file_path_for_tracking)
     trackingDataframes.append(tempTracking_df)
 
 

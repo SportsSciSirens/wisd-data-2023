@@ -31,7 +31,7 @@ Verify that you have installed Python version 3.8 or later and have a copy of th
 2. Run `source venv/bin/activate` to activate python virtual environment.
 3. Run `pip install -r requirements.txt` to download script dependencies
 
-### Running the script
+### Running the script in JSON and CSV format
 1. Create a `.env` file at the root of the codebase
 2. Copy the contents of `.env.template` into the newly created `.env` file.
 3. Update the following values based on the instructions provided in the **#general** channel of the slack.
@@ -42,4 +42,8 @@ AWS_SECRET_ACCESS_KEY
 ```
 > 📝: FILE_PATH_FOR_DATA set it to whatever file path you wish to store the data.
 
-4. Run `python download-data.py` and the script will proceed to download all the data from the SportsRadar S3 bucket. 
+4. Run `python download-data.py` and the scr️ipt will proceed to download all the data from the SportsRadar S3 bucket. 
+
+### Running the script for py_ball and dataframe output
+> ‼️: Run the previous step for section for pulling in JSON and CSV data.
+1. Run `python tracking-data-and-mapped-pbp.py`
