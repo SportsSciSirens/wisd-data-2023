@@ -5,7 +5,7 @@ import json
 import csv
 from tqdm import tqdm
 
-load_dotenv()
+load_dotenv(wisdab.env)
 
 try:
 
