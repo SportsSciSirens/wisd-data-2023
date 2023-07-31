@@ -15,6 +15,7 @@
 * [Overview](#)
 * [Prerequisites](#)
 * [Download Data](#download-data)
+* [Running Notebook for Analysis Output](#running-notebook-for-analysis-output)
 
 ## Overview
 This is our getting started codebase where you will be provided a script and steps to download the file. 
@@ -22,6 +23,13 @@ This is our getting started codebase where you will be provided a script and ste
 ## Prerequisites
 * Python v3.10
 * AWS Credentials
+
+## Libraries
+* Math 
+* Numpy 
+* Pandas
+* JSON 
+* Py_ball
 
 ## Download Data
 Verify that you have installed Python version 3.8 or later and have a copy of the SportsRadar AWS Credentials.
@@ -47,3 +55,13 @@ AWS_SECRET_ACCESS_KEY
 ### Running the script for py_ball and dataframe output
 > ‼️: Run the previous step for section for pulling in JSON and CSV data.
 1. Run `python tracking-data-and-mapped-pbp.py`
+
+## Running Notebook for Analysis Output
+Change `line 7` the variable `file_path` to the proper directory for the data.
+The datat used in this project are
+```text
+	- metadata/games.json
+	- metadata/teams.json
+	- metadata/players.json
+```
+> Note: It is normal for the cell gathering data from Py_Ball to have a run time of ~15+ mins
